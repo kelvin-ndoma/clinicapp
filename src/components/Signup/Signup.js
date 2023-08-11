@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+
+import "./Signup.css"
 
 const Signup = () => {
   const [formData, setFormData] = useState({
@@ -66,32 +67,31 @@ const Signup = () => {
       if (response.ok) {
         // User registered successfully
         const userData = await response.json();
-        console.log('User registered:', userData);
-        // TODO: Redirect to another page or show a success message
+       alert('User registered successfully:', userData);
+        
         navigate('/login'); // Navigate to the login page after successful signup
       } else {
         // Error occurred while registering
         const errorData = await response.json();
         console.error('Registration error:', errorData);
-        // TODO: Display error message to the user
+        // Display error message to the user
       }
     } catch (error) {
-      console.error('Error occurred during registration:', error);
-      // TODO: Display error message to the user
+      alert('Error occurred during registration:', error);
+      // Display error message to the user
     }
   };
 
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
-
-  const handleTogglePassword = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
+  const handlePasswordVisibility = () => {
+    const passwordInput = document.getElementById('password');
+    passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
   };
 
   return (
-    <div>
+    <div className="signup-container">
       <h2>Sign Up</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="input-container">
           <label htmlFor="name">Name:</label>
           <input
             type="text"
@@ -103,7 +103,7 @@ const Signup = () => {
           />
           {formErrors.name && <span>{formErrors.name}</span>}
         </div>
-        <div>
+        <div className="input-container">
           <label htmlFor="email">Email:</label>
           <input
             type="email"
@@ -115,28 +115,29 @@ const Signup = () => {
           />
           {formErrors.email && <span>{formErrors.email}</span>}
         </div>
-        <div>
+        <div className="input-container">
           <label htmlFor="password">Password:</label>
           <div className="password-input-container">
             <input
-              type={showPassword ? 'text' : 'password'}
+              type="password"
               id="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
               required
             />
-            <button
-              type="button"
-              className="toggle-password-btn"
-              onClick={handleTogglePassword}
-            >
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
-            </button>
+            <label htmlFor="showPassword">
+              <input
+                type="checkbox"
+                id="showPassword"
+                onClick={handlePasswordVisibility}
+              />{' '}
+              Show Password
+            </label>
           </div>
           {formErrors.password && <span>{formErrors.password}</span>}
         </div>
-        <div>
+        <div className="input-container">
           <label htmlFor="passwordConfirmation">Confirm Password:</label>
           <input
             type="password"
@@ -146,6 +147,7 @@ const Signup = () => {
             onChange={handleChange}
             required
           />
+          
           {formErrors.passwordConfirmation && (
             <span>{formErrors.passwordConfirmation}</span>
           )}

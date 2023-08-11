@@ -1,0 +1,122 @@
+/* MyBlogs.css */
+
+/* Container */
+.my-blogs-container {
+    margin: 20px;
+  }
+  
+  /* Title */
+  .my-blogs-title {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  /* Login Prompt */
+  .login-prompt {
+    text-align: center;
+    margin-top: 20px;
+    font-style: italic;
+  }
+  
+  /* My Blogs Section */
+  .my-blogs-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  /* Create Blog Section */
+  .create-blog-section {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 20px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+  }
+  
+  .blog-input,
+  .blog-textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+  }
+  
+  /* Blog List Section */
+  .blog-list-section {
+    width: 100%;
+    max-width: 800px;
+  }
+  
+  .blog-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .blog-item {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .blog-item-title {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #333;
+  }
+  
+  .blog-item-content {
+    margin-bottom: 15px;
+    color: #444;
+  }
+  
+  .blog-item-likes {
+    font-size: 16px;
+    color: #777;
+    margin-bottom: 10px;
+  }
+  
+  .action-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+  }
+  
+  .action-button:hover {
+    background-color: #0056b3;
+  }
+  
+  /* Responsive Styles */
+  
+  /* Small screens */
+  @media (max-width: 768px) {
+    .create-blog-section,
+    .blog-item {
+      padding: 10px;
+    }
+  
+    .my-blogs-title {
+      font-size: 20px;
+    }
+  
+    .blog-input,
+    .blog-textarea,
+    .action-button {
+      font-size: 12px;
+    }
+  }
+  

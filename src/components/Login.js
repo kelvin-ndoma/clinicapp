@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
+
+import "./Login.css"
 
 const Login = ({ onLogin }) => {
   const [formData, setFormData] = useState({
     name: '',
     password: '',
+    role: 0,
   });
 
   const [formErrors, setFormErrors] = useState({
@@ -73,17 +75,18 @@ const Login = ({ onLogin }) => {
     }
   };
 
-  const [showPassword, setShowPassword] = useState(false); // State to toggle password visibility
 
-  const handleTogglePassword = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
+
+  const handlePasswordVisibility = () => {
+    const passwordInput = document.getElementById('password');
+    passwordInput.type = passwordInput.type === 'password' ? 'text' : 'password';
   };
 
   return (
-    <div>
+    <div className="login-container">
       <h2>Login</h2>
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="input-container">
           <label htmlFor="name">Name:</label>
           <input
             type="text"
@@ -93,28 +96,32 @@ const Login = ({ onLogin }) => {
             onChange={handleChange}
             required
           />
-          {formErrors.name && <span>{formErrors.name}</span>}
+          {formErrors.name && <span className="error">{formErrors.name}</span>}
         </div>
-        <div>
+        <div className="input-container">
           <label htmlFor="password">Password:</label>
           <div className="password-input-container">
             <input
-              type={showPassword ? 'text' : 'password'}
+              type="password"
               id="password"
               name="password"
               value={formData.password}
               onChange={handleChange}
               required
             />
-            <button
-              type="button"
-              className="toggle-password-btn"
-              onClick={handleTogglePassword}
-            >
-              {showPassword ? <FaEyeSlash /> : <FaEye />}
-            </button>
+            <label htmlFor="showPassword">
+              <input
+                type="checkbox"
+                id="showPassword"
+                onChange={handlePasswordVisibility}
+              />{' '}
+              Show Password
+            </label>
           </div>
-          {formErrors.password && <span>{formErrors.password}</span>}
+          {formErrors.password && <span className="error">{formErrors.password}</span>}
+          <div className="signup-link">
+            <p>Don't have an account? <Link to="/signup">Signup</Link></p>
+          </div>
         </div>
         <button type="submit">Login</button>
       </form>

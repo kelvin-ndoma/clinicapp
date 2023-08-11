@@ -1,0 +1,182 @@
+/* Activity.css */
+
+/* Reset some default styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Apply a global font and background color */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f5f5f5;
+}
+
+/* Styles for the entire component container */
+.activities-container {
+  margin: 20px;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Main title */
+.activities-title {
+  font-size: 24px;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+/* Styles for the section containing activities list */
+.activities-section {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+}
+
+/* Title of the activities list section */
+.activities-section-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+/* List of activities */
+.activity-list {
+  list-style: none;
+}
+
+/* Individual activity items in the list */
+.activity-item {
+  font-size: 16px;
+  margin-bottom: 5px;
+  color: #666;
+}
+
+/* Styles for the section containing upcoming events */
+.upcoming-events {
+  margin-top: 20px;
+  border-top: 1px solid #ccc;
+  padding-top: 20px;
+}
+
+/* Title of upcoming events section */
+.upcoming-events-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #555;
+}
+
+/* Description of upcoming events section */
+.upcoming-events-description {
+  font-size: 14px;
+  margin-bottom: 10px;
+  color: #888;
+}
+
+/* List of upcoming events */
+.upcoming-events-list {
+  list-style: none;
+}
+
+/* Individual upcoming event items */
+.upcoming-event {
+  margin: 20px 0;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Details of each activity */
+.activity-details {
+  margin-bottom: 10px;
+}
+
+/* Image within activity details */
+.activity-image-container {
+  max-width: 100%;
+  overflow: hidden;
+}
+
+/* Image itself */
+.activity-image {
+  width: 100%;
+  height: auto;
+}
+
+/* Comments section */
+.activity-comments {
+  margin-top: 10px;
+  font-size: 14px;
+  color: #888;
+}
+
+/* Ratings section */
+.activity-rating {
+  margin-top: 10px;
+  font-size: 16px;
+  color: #ffcc00;
+}
+
+/* Labels within details and rating sections */
+.activity-details-label,
+.activity-rating-label {
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+/* Adjust the comment form container */
+.form-container {
+  margin-top: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  background-color: #f5f5f5;
+}
+
+/* Style the input and submit button within the form */
+.form-container input[type="text"],
+.form-container button[type="submit"] {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 5px;
+}
+
+.form-container button[type="submit"] {
+  background-color: #ffcc00;
+  color: #333;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.form-container button[type="submit"]:hover {
+  background-color: #ffa600;
+}
+
+/* Add a specific class to style the comment input element */
+.form-container .comment-input {
+  height: 60px;
+}
+
+/* Responsive styles for screens with max-width 768px */
+@media (max-width: 768px) {
+  .activities-title,
+  .activities-section-title,
+  .upcoming-events-title {
+    font-size: 18px;
+  }
+
+  .activity-image {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* Adjust comment form container for smaller screens */
+  .form-container {
+    padding: 5px;
+  }
+}

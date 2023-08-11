@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './Admin.css';
 
 const AdminDashboard = () => {
   const [activities, setActivities] = useState([]);
@@ -9,7 +10,7 @@ const AdminDashboard = () => {
     scheduled_time: '',
   });
   const [editingActivity, setEditingActivity] = useState(null);
-
+  // convert to 12hrs format
   const formatTime12hr = (timeString) => {
     const options = {
       year: 'numeric',
@@ -138,8 +139,14 @@ const AdminDashboard = () => {
 
   const handleEdit = (activity) => {
     setEditingActivity(activity);
-    setNewActivity(activity);
+    setNewActivity({
+      name: '',
+      picture: '',
+      description: '',
+      scheduled_time: '',
+    });
   };
+
 
   const handleDelete = async (id) => {
     try {
@@ -158,12 +165,12 @@ const AdminDashboard = () => {
   };
 
   return (
-    <div>
+    <div className="admin-dashboard">
       <h2>Admin Dashboard</h2>
-      <div>
+      <div className="create-activity">
         <h3>Create New Activity</h3>
         <form onSubmit={handleSubmit}>
-          <div>
+          <div className="form-group">
             <label htmlFor="name">Name:</label>
             <input
               type="text"
@@ -174,7 +181,7 @@ const AdminDashboard = () => {
               required
             />
           </div>
-          <div>
+          <div className="form-group">
             <label htmlFor="picture">Picture URL:</label>
             <input
               type="text"
@@ -187,7 +194,7 @@ const AdminDashboard = () => {
               required
             />
           </div>
-          <div>
+          <div className="form-group">
             <label htmlFor="description">Description:</label>
             <textarea
               id="description"
@@ -201,7 +208,7 @@ const AdminDashboard = () => {
               required
             />
           </div>
-          <div>
+          <div className="form-group">
             <label htmlFor="scheduled_time">Scheduled Time:</label>
             <input
               type="datetime-local"
@@ -222,11 +229,11 @@ const AdminDashboard = () => {
         </form>
       </div>
 
-      <div>
+      <div className="activity-list">
         <h3>All Activities</h3>
         <ul>
           {activities.map((activity) => (
-            <li key={activity.id}>
+            <li key={activity.id} className="activity-card">
               <div>
                 <strong>Name:</strong> {activity.name}
               </div>
@@ -245,7 +252,7 @@ const AdminDashboard = () => {
                 <strong>Scheduled Time:</strong>{' '}
                 {formatTime12hr(activity.scheduled_time)}
               </div>
-              <div>
+              <div className="activity-comments unique-activity-comments">
                 <strong>Comments:</strong>{' '}
                 <ul>
                   {activity.comments.map((comment) => (
@@ -253,7 +260,7 @@ const AdminDashboard = () => {
                   ))}
                 </ul>
               </div>
-              <div>
+              <div className="activity-ratings unique-activity-ratings">
                 <strong>Ratings:</strong>{' '}
                 <ul>
                   {activity.ratings.map((rating) => (
@@ -261,8 +268,14 @@ const AdminDashboard = () => {
                   ))}
                 </ul>
               </div>
-              <button onClick={() => handleEdit(activity)}>Edit</button>
-              <button onClick={() => handleDelete(activity.id)}>Delete</button>
+              <div className="activity-actions">
+                <button className="btn" onClick={() => handleEdit(activity)}>
+                  Edit
+                </button>
+                <button className="btn" onClick={() => handleDelete(activity.id)}>
+                  Delete
+                </button>
+              </div>
             </li>
           ))}
         </ul>
